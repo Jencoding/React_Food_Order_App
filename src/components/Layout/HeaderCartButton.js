@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import CartIcon from '../Cart/CartIcon'
 import classes from './HeaderCartButton.module.css'
 import CartContext from '../../store/cart-context'
+import { Link } from 'react-router-dom'
 
 const HeaderCartButton = ( {onClick} ) => {
   
@@ -35,14 +36,17 @@ const HeaderCartButton = ( {onClick} ) => {
   }, [items]);
 
 
-    return <button className={btnClasses} onClick={onClick}>
-    <span className={classes.icon}>
+    return (
+    <Link to='/cart'>
+      <button className={btnClasses} onClick={onClick}>
+          <span className={classes.icon}>
       <CartIcon />
-    </span>
-    <span>Cart</span>
-    <span className={classes.badge}>{numberOfCartItems}</span>
-    
-    </button>
+          </span>
+          <span>Cart</span>
+          <span className={classes.badge}>{numberOfCartItems}</span>
+      </button>
+    </Link>
+    )
 }
 
 export default HeaderCartButton
